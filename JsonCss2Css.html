@@ -1,0 +1,33 @@
+!
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <textarea id="1" onchange="onChange()" style="width: 30vw; height: 30vh;"></textarea>
+
+    <textarea id="2" style="width: 30vw; height: 30vh;"></textarea>
+</body>
+
+<script>
+    const camelToSnakeCase = str => str.replace(/[A-Z](?=(?:[^"]*"[^"]*")*[^"]*$)(?=(?:[^']*'[^']*')*[^']*$)(?=(?:[^`]*`[^`]*`)*[^`]*$)/g, letter => `-${letter.toLowerCase()}`);
+    const removeQuote = str => str.replace(/["'`]/g, letter=> '');
+    const replace = str => str.replace(/[,]/g, letter=>';');
+    const onChange = () => {
+        console.log(camelToSnakeCase(document.getElementById("1").value))
+        let rs = camelToSnakeCase(document.getElementById("1").value);
+        rs = removeQuote(rs);
+        rs = replace(rs);
+        document.getElementById("2").value = rs;
+        
+    }
+</script>
+
+</html>
